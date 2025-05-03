@@ -3,7 +3,6 @@ from app.controllers.predict_controller import predict_image
 
 router = APIRouter()
 
-# Define the /predict endpoint
-@router.post("/predict/")
+@router.post("/predict")
 async def predict(file: UploadFile = File(...)):
     return await predict_image(file)
