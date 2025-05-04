@@ -1,8 +1,21 @@
 import os
 from fastapi import FastAPI
 from app.routers.predict_router import router as predict_router
-
 app = FastAPI()
+
+from fastapi.middleware.cors import CORSMiddleware
+
+# Add this below your app = FastAPI() line
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # You can specify ["http://localhost:10000"] for more security
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+
 
 # Root endpoint for testing
 @app.get("/")
